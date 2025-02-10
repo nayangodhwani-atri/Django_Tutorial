@@ -1,2 +1,3 @@
 # Django_Tutorial
-Fsirst Github Repository
+1. First Github Repository
+2. Created a feature branch
