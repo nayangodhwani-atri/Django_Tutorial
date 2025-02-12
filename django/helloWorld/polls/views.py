@@ -1,8 +1,13 @@
 from django.shortcuts import render
 from django.http import HttpResponse
+from .models import Question
+from django.template import loader
 
 def index(request):
-    return HttpResponse("Created my own view!")
+    latest_question_list = Question.objects.order_by('-pub_date')[:1]
+    output = ', '.join([q.question_text for q in latest_question_list])
+    template = loader.get_template('polls/index.html')
+    return render(request,"polls/index.html")
 
 def detail(request, question_id):
     return HttpResponse("You're looking at question %s." % question_id)
